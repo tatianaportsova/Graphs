@@ -76,13 +76,15 @@ class Graph:
                 for i in self.get_neighbors(v):
                     to_visit.push(i)    # print(f"Adding: {n}")
 
-    def dft_recursive(self, starting_vertex, visited=set()):
+    def dft_recursive(self, starting_vertex, visited=None):
         """
         Print each vertex in depth-first order
         beginning from starting_vertex.
 
         This should be done using recursion.
         """
+        if visited == None:
+            visited = set()
         if starting_vertex not in visited:
             visited.add(starting_vertex)
             print(starting_vertex)
@@ -143,7 +145,7 @@ class Graph:
                         new_path.append(neighbor)
                         to_visit.push(new_path) 
 
-    def dfs_recursive(self, starting_vertex, destination_vertex, path=[], visited=set()):
+    def dfs_recursive(self, starting_vertex, destination_vertex, path=None, visited=None):
         """
         Return a list containing a path from
         starting_vertex to destination_vertex in
@@ -151,6 +153,10 @@ class Graph:
 
         This should be done using recursion.
         """
+        if path == None:
+            path = []
+        if visited == None:
+            visited = set()
         visited.add(starting_vertex)
         path = path + [starting_vertex]
         if starting_vertex == destination_vertex:
